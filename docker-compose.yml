@@ -40,6 +40,23 @@ services:
     networks:
       default:
         ipv4_address: 172.20.0.3
+    upstream_dns:
+      - 168.95.1.1
+      - 101.101.101.101
+      - https://dns.cloudflare.com/dns-query
+      - https://dns.google/dns-query
+      - https://dns10.quad9.net/dns-query
+    upstream_mode: parallel_requests
+    bootstrap_dns:
+      - 168.95.1.1:53
+      - 1.1.1.1:53
+      - 8.8.8.8:53
+    cache_size: 67108864
+    cache_ttl_min: 300
+    cache_ttl_max: 86400  
+    cache_optimistic: true
+    edns_client_subnet:
+      enabled: true
 
 networks:
   default:
